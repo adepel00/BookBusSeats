@@ -1,0 +1,105 @@
+
+body{
+	background-color: #E6E6E6;
+	font-family: arial;
+}
+
+h1{
+	text-align: center;
+	margin-top: 50px;
+	font-size: 30px;
+	color: #0E8F8A;
+}
+
+h2{
+	text-align:center;
+	margin-top:10px;
+	font-size:20px;
+	color: white;
+}
+
+#select_box, #chose_asientos{
+	margin-top: 20px;
+	width:500px;
+	background-color:#0E8F8A;
+	padding:10px;
+	height:150px;
+	border-radius:5px;
+	box-shadow:0px 0px 10px 0px grey;
+}
+#chose_asientos{
+	color: white;
+	display: none;
+}
+
+.form_datos_personales{
+	margin-top: 20px;
+	width:500px;
+	background-color:#0E8F8A;
+	padding:10px;
+	height:200px;
+	border-radius:5px;
+	box-shadow:0px 0px 10px 0px grey;
+	display: none;
+}
+
+select{
+	width:400px;
+	height:50px;
+	border:1px solid #BDBDBD;
+	margin-top:20px;
+	padding:10px;
+	font-size:20px;
+	color:grey;
+	border-radius:5px;
+}
+
+[type="checkbox"]{
+	align-self: left;
+   -webkit-appearance: initial;
+    appearance: initial;
+    background: gray;
+    width: 20px;
+    height: 20px;
+    border: 10px green;
+    background: white;
+    position: relative;
+}
+[type="checkbox"]:checked {
+    background: #28D320;
+}
+[type="checkbox"]:disabled {
+    background: red;
+}
+[type="checkbox"]:checked:after {
+    /* Heres your symbol replacement - this is a tick in Unicode. */
+    content: "";
+    color: #fff;
+}
+
+label{
+	margin-top: 10px;
+    display: inline-block;
+    width: 100px;
+    text-align: right;
+}
+
+.buttonReserva{
+	margin-top: 15px;
+	background-color: white;
+    color: #0E8F8A;
+    border: 2px white; 
+    font-weight: bolder;
+    font-size: 16px;
+}
+
+.buttonReserva:hover {
+	background-color: #06413E;
+    color: white;
+    border: 2px white; 
+}
+
+.buttonReserva:active {
+  box-shadow: 0 5px #666;
+  transform: translateY(1px);
+}
