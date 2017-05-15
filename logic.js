@@ -69,11 +69,13 @@ function reservar(){
 	var nombreCliente = document.getElementsByName("nombre")[0].value;
 	var nifCliente = document.getElementsByName("nif")[0].value;
 	var emailCliente = document.getElementsByName("email")[0].value;
-	var xhttp = new XMLHttpRequest();
+	var xhttpReserva = new XMLHttpRequest();
+	var xhttpCliente = new XMLHttpRequest();
 	var asientosReservados = new Array();
-	xhttp.open("POST", "reserva.php", true);
-	xhttp.setRequestHeader("Content-Type", "application/json");
-	xhttp.onreadystatechange = function(){
+	//POST de los asientos que reservo
+	xhttpReserva.open("POST", "reserva.php", true);
+	xhttpReserva.setRequestHeader("Content-Type", "application/json");
+	xhttpReserva.onreadystatechange = function(){
 		if(this.readyState == 4 && this.status == 200){
 			peticionPost(this);
 		}
@@ -94,12 +96,32 @@ function reservar(){
 	} else if(nombreCliente === "" || nifCliente === "" || emailCliente === ""){
 		alert("Debe rellenar todos los datos personales");
 	}else{
-		xhttp.send(JSON.stringify(asientosReservados));
+		xhttpReserva.send(JSON.stringify(asientosReservados));
+	}
+
+	//POST del cliente que reserva
+	xhttpCliente.open("POST", "cliente.php", true);
+	xhttpCliente.setRequestHeader("Content-Type", "application/json");
+	xhttpCliente.onreadystatechange = function(){
+		if(this.readyState == 4 && this.status == 200){
+			peticionPost(this);
+		}
+	}
+	cliente = {
+		'dniUsuario': nifCliente,
+		'nombre':nombreCliente,
+		'email':emailCliente
+	}
+	if(asientosReservados.length === 0){
+		alert("Debe seleccionar algún asiento");
+	} else if(nombreCliente === "" || nifCliente === "" || emailCliente === ""){
+		alert("Debe rellenar todos los datos personales");
+	}else{
+		xhttpCliente.send(JSON.stringify(cliente));
 	}
 }
 
 function peticionPost(xhttp){
-	//alert(xhttp.statusText);
 	alert(xhttp.responseText);
 }
 

@@ -43,8 +43,18 @@
 			return $this->conexion->query($query);
 		}
 
+		function readClientes(){
+			$query = 'SELECT * FROM clientes';
+			return $this->conexion->query($query);
+		}
+
 		function insertAsiento($destino, $asiento, $dniUsuario){
 			$query = "INSERT INTO asientos (Destino, Asiento, DNIUsuario) VALUES ('".$destino."', '".$asiento."', '".$dniUsuario."')";
+			return $this->conexion->query($query);
+		}
+
+		function insertCliente($dniUsuario, $nombre, $email){
+			$query = "INSERT INTO clientes (DNIUsuario, Nombre, Email) VALUES ('".$dniUsuario."', '".$nombre."', '".$email."')";
 			return $this->conexion->query($query);
 		}
 	}
