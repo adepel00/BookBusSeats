@@ -1,9 +1,9 @@
 <?php 
 	include("BBDDManager.php");
 
-	print_r($_POST);
+	//var_dump(file_get_contents('php://input'));
 
-	$asientosReservados = json_decode($_POST);
+	$asientosReservados = json_decode(file_get_contents('php://input'));
 	//$asientosReservados = json_decode('[{"destino":"Oviedo","numero":1,"nifCliente":"71468999H"},{"destino":"Oviedo","numero":2,"nifCliente":"71468999H"}]');
 	$BBDDManager = BBDDManager::getInstance();
 	$numAsientosReservados = 0;
@@ -13,4 +13,5 @@
 			$numAsientosReservados++;
 		}
 	}
+	echo $numAsientosReservados;
 ?>

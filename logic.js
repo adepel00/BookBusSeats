@@ -66,44 +66,40 @@ function showForms(destino){
 }
 
 function reservar(){
-	var asientosEnviar = new Array();
 	var nombreCliente = document.getElementsByName("nombre")[0].value;
 	var nifCliente = document.getElementsByName("nif")[0].value;
 	var emailCliente = document.getElementsByName("email")[0].value;
 	var xhttp = new XMLHttpRequest();
+	var asientosReservados = new Array();
 	xhttp.open("POST", "reserva.php", true);
+	xhttp.setRequestHeader("Content-Type", "application/json");
 	xhttp.onreadystatechange = function(){
-	if(this.readyState == 4 && this.status == 200){
-		var asientosReservados = new Array();
-			for(i = 1; i <= countAsientos; i++){
-				var checkBox = document.getElementById("checkAsiento" + i);
-				if(checkBox.checked === true){
-					asientoReservado = {
-						'destino':destinoSeleccionado,
-						'numero':i,
-						'nifCliente':nifCliente
-					}
-					//asientosReservados.push(JSON.stringify(asientoReservado));
-					asientosReservados.push(asientoReservado);
-				}
-			}
-			if(asientosReservados.length === 0){
-				alert("Debe seleccionar algún asiento");
-			} else if(nombreCliente === "" || nifCliente === "" || emailCliente === ""){
-				alert("Debe rellenar todos los datos personales");
-			}else{
-				//asientosEnviar = asientosReservados;
-				asientosEnviar = JSON.stringify(asientosReservados);
-				//asientosEnviar = asientosReservados.map(JSON.stringify);
-			}
+		if(this.readyState == 4 && this.status == 200){
+			peticionPost(this);
 		}
-		peticionPost(this);
 	}
-	xhttp.send(asientosEnviar);
+	for(i = 1; i <= countAsientos; i++){
+		var checkBox = document.getElementById("checkAsiento" + i);
+		if(checkBox.checked === true){
+			asientoReservado = {
+				'destino':destinoSeleccionado,
+				'numero':i,
+				'nifCliente':nifCliente
+			}
+			asientosReservados.push(asientoReservado);
+		}
+	}
+	if(asientosReservados.length === 0){
+		alert("Debe seleccionar algún asiento");
+	} else if(nombreCliente === "" || nifCliente === "" || emailCliente === ""){
+		alert("Debe rellenar todos los datos personales");
+	}else{
+		xhttp.send(JSON.stringify(asientosReservados));
+	}
 }
 
 function peticionPost(xhttp){
-	alert(xhttp.statusText);
+	//alert(xhttp.statusText);
 	alert(xhttp.responseText);
 }
 
