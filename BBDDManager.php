@@ -16,8 +16,8 @@
 
 		function openConectionBBDD(){
 			$server = 'localhost';
-			$username = 'root';
-			$password = '';
+			$username = 'prueba';
+			$password = 'prueba';
 			$database_name = 'plazasbuses';
 			
 			$this->conexion = new mysqli($server,$username,$password,$database_name);

@@ -30,6 +30,7 @@ h2{
 #chose_asientos{
 	color: white;
 	display: none;
+	height:200px;
 }
 
 .form_datos_personales{
@@ -72,7 +73,6 @@ select{
     background: red;
 }
 [type="checkbox"]:checked:after {
-    /* Heres your symbol replacement - this is a tick in Unicode. */
     content: "";
     color: #fff;
 }
@@ -82,6 +82,33 @@ label{
     display: inline-block;
     width: 100px;
     text-align: right;
+}
+
+#leyenda>label{
+	text-align: left;
+}
+
+#leyendaSelect, #leyendaLibre, #leyendaOcupado{
+width: 15px;
+height: 15px;
+border: 1px solid black;
+display: inline-block;
+margin-right: 5px;
+border-radius: 4px;
+}
+
+#leyendaSelect{
+	background: #28D320;
+}
+
+#leyendaLibre{
+	background: white;
+	margin-left: 30px;
+}
+
+#leyendaOcupado{
+	background: red;
+	
 }
 
 .buttonReserva{
