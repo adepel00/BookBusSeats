@@ -12,5 +12,5 @@
 		}
 	}
 
-	echo $numAsientosReservados;
+	echo "Ha reservado ".$numAsientosReservados." asientos.";
 ?>

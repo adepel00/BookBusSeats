@@ -24,8 +24,6 @@
 
 			if ($this->conexion->connect_error) { 
 				alert('Error de Conexión con la base de datos');
-			} else {
-				//'Conexion OK';
 			}
 		}
 

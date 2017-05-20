@@ -102,21 +102,12 @@ function reservar(){
 	//POST del cliente que reserva
 	xhttpCliente.open("POST", "cliente.php", true);
 	xhttpCliente.setRequestHeader("Content-Type", "application/json");
-	xhttpCliente.onreadystatechange = function(){
-		if(this.readyState == 4 && this.status == 200){
-			peticionPost(this);
-		}
-	}
 	cliente = {
 		'dniUsuario': nifCliente,
 		'nombre':nombreCliente,
 		'email':emailCliente
 	}
-	if(asientosReservados.length === 0){
-		alert("Debe seleccionar algún asiento");
-	} else if(nombreCliente === "" || nifCliente === "" || emailCliente === ""){
-		alert("Debe rellenar todos los datos personales");
-	}else{
+	if(asientosReservados.length !== 0 && nombreCliente !== "" && nifCliente !== "" && emailCliente !== ""){
 		xhttpCliente.send(JSON.stringify(cliente));
 	}
 }
